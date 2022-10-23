@@ -1,31 +1,41 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { createAtomCreators } from "jotai-trpc";
-import { httpBatchLink, loggerLink } from "@trpc/client";
-import superjson from "superjson";
+import { atom, useAtom } from "jotai";
+// import { createAtomCreators } from "jotai-trpc";
+// import { httpBatchLink, loggerLink } from "@trpc/client";
+// import superjson from "superjson";
 
-import { trpc, getBaseUrl } from "../utils/trpc";
-import { AppRouter } from "../server/trpc/router/_app";
-import { publicRouter } from "../server/trpc/router/heroes";
+import {
+  trpc,
+  // getBaseUrl
+} from "../utils/trpc";
+// import { AppRouter } from "../server/trpc/router/_app";
+// import { publicRouter } from "../server/trpc/router/heroes";
 
-const { atomWithQuery } = createAtomCreators<AppRouter>({
-  transformer: superjson,
-  links: [
-    loggerLink({
-      enabled: (opts) =>
-        process.env.NODE_ENV === "development" ||
-        (opts.direction === "down" && opts.result instanceof Error),
-    }),
-    httpBatchLink({
-      url: `${getBaseUrl()}/api/trpc`,
-    }),
-  ],
-});
+// const { atomWithQuery } = createAtomCreators<AppRouter>({
+//   transformer: superjson,
+//   links: [
+//     loggerLink({
+//       enabled: (opts) =>
+//         process.env.NODE_ENV === "development" ||
+//         (opts.direction === "down" && opts.result instanceof Error),
+//     }),
+//     httpBatchLink({
+//       url: `${getBaseUrl()}/api/trpc`,
+//     }),
+//   ],
+// });
 
-const data = atomWithQuery(publicRouter.heroes);
+// Cannot pass the path
+// const data = atomWithQuery(publicRouter.heroes);
+
+// This will failed
+const data = atom(trpc.public.heroes.useQuery().data);
 
 const TrpcAtomPage: NextPage = () => {
-  const { data: heroes } = trpc.public.heroes.useQuery();
+  // const { data: heroes } = trpc.public.heroes.useQuery();
+
+  const [heroes] = useAtom(data);
 
   return (
     <div className="container flex min-h-screen flex-col items-center justify-center">
