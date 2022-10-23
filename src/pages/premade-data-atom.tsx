@@ -65,7 +65,7 @@ const Hero = ({hero}: {hero: PrimitiveAtom<NewHeroes>}) => {
 }
 
 
-const SplitAtomPage: NextPage = () => {
+const PremadeDataAtomPage: NextPage = () => {
   const [heroes] = useAtom(heroesAtomsAtom)
   const [list] = useAtom(selectedHeroes)
 
@@ -84,5 +84,5 @@ const SplitAtomPage: NextPage = () => {
   )
 };
 
-export default SplitAtomPage;
+export default PremadeDataAtomPage;
 
