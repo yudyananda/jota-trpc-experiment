@@ -1,7 +1,16 @@
 import type { NextPage } from "next";
+import { trpc } from "../utils/trpc";
 
 const TrpcAtomPage: NextPage = () => {
-  return <div>WOwo</div>
-}
+  const { data: heroes } = trpc.public.heroes.useQuery();
 
-export default TrpcAtomPage
+  return (
+    <div>
+      {heroes?.map((hero) => (
+        <div key={hero.name}>{hero.name}</div>
+      ))}
+    </div>
+  );
+};
+
+export default TrpcAtomPage;
