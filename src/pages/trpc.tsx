@@ -10,7 +10,7 @@ const TrpcAtomPage: NextPage = () => {
     <div className="container flex min-h-screen flex-col items-center justify-center">
       <div className="mb-10 flex gap-10 underline">
         <Link href="/">Homepage</Link>
-        <Link href="/premade-data-atom">Hard Coded Data</Link>
+        <Link href="/hardcoded">Hard Coded Data</Link>
       </div>
       <h1 className="mb-4 text-2xl font-semibold">tRPC</h1>
       <ul className="text-center leading-loose">
