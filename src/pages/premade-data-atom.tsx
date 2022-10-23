@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import { atom, useAtom, PrimitiveAtom } from "jotai";
 import { splitAtom } from "jotai/utils";
 import { ChangeEvent } from "react";
+import Link from "next/link";
 
 interface Heroes {
   name: string;
@@ -70,7 +71,11 @@ const PremadeDataAtomPage: NextPage = () => {
 
   return (
     <div className="container flex min-h-screen flex-col items-center justify-center">
-      <h1 className="mb-4 text-2xl font-semibold">Heroes</h1>
+      <div className="mb-10 flex gap-10 underline">
+        <Link href="/">Homepage</Link>
+        <Link href="/trpc-atom">tRPC</Link>
+      </div>
+      <h1 className="mb-4 text-2xl font-semibold">Hard Coded</h1>
       <ul className="text-center leading-loose">
         {heroes.map((hero) => (
           <Hero key={hero as any} hero={hero} />
