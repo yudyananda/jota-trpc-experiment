@@ -1,9 +1,9 @@
 // src/server/trpc/router/_app.ts
 import { router } from "../trpc";
-import { heroesRouter } from "./heroes";
+import { publicRouter } from "./heroes";
 
 export const appRouter = router({
-  public: heroesRouter
+  public: publicRouter
 });
 
 // export type definition of API

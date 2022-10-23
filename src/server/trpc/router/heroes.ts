@@ -1,6 +1,6 @@
 import { router, publicProcedure } from "../trpc";
 
-export const heroesRouter = router({
+export const publicRouter = router({
   heroes: publicProcedure.query(({ctx}) => {
     return ctx.prisma.heroes.findMany({
       select: {
