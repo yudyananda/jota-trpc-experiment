@@ -22,7 +22,7 @@ const { atomWithQuery } = createAtomCreators<AppRouter>({
   ],
 });
 
-// const data = atomWithQuery(publicRouter.heroes);
+const data = atomWithQuery(publicRouter.heroes);
 
 const TrpcAtomPage: NextPage = () => {
   const { data: heroes } = trpc.public.heroes.useQuery();
